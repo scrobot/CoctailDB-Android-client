@@ -20,7 +20,7 @@ jobs:
           key: jars-v1-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Download Dependencies
-          command: cd CoctailDB && ./gradlew :app:androidDependencies
+          command: ./gradlew :app:androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
@@ -35,7 +35,7 @@ jobs:
           key: jars-v1-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Run Tests
-          command: cd CoctailDB && ./gradlew lint test
+          command: ./gradlew lint test
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
           path: app/build/reports
           destination: reports
@@ -51,7 +51,7 @@ jobs:
           key: jars-v1-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Building the application
-          command: cd CoctailDB && ./gradlew :app:assembleDebug
+          command: ./gradlew :app:assembleDebug
       - persist_to_workspace:
           root: .
           paths:
