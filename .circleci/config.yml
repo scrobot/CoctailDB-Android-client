@@ -1,15 +1,66 @@
-# Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
 
-# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.3.1
+executors:
+  build-executor:
+    docker:
+      - image: circleci/android:api-28-alpha
+    working_directory: ~/code
 
-# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
+jobs:
+  dependencies:
+    executor: build-executor
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
+      - run:
+          name: Download Dependencies
+          command: cd CoctailDB && ./gradlew :app:androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
+  test:
+    executor: build-executor
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
+      - run:
+          name: Run Tests
+          command: cd CoctailDB && ./gradlew lint test
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
+          path: CoctailDB/app/build/reports
+          destination: reports
+      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: CoctailDB/app/build/test-results
+  build:
+    executor: build-executor
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
+      - run:
+          name: Building the application
+          command: cd CoctailDB && ./gradlew :app:assembleDebug
+      - persist_to_workspace:
+          root: .
+          paths:
+            - CoctailDB/app/build
 workflows:
-  # Name the workflow "Welcome"
-  Welcome:
-    # Run the welcome/run job in its own container
+  version: 2
+  test-and-deploy:
     jobs:
-      - welcome/run
+      - dependencies
+      - test:
+          requires:
+            - dependencies
+      - build:
+          requires:
+            - test
