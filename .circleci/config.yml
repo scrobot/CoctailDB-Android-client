@@ -17,14 +17,14 @@ jobs:
           name: print repo name
           command: ls -n
       - restore_cache:
-          key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
+          key: jars-v1-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Download Dependencies
           command: cd CoctailDB && ./gradlew :app:androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
+          key: jars-v1-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
   test:
     executor: build-executor
     environment:
@@ -32,15 +32,15 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
+          key: jars-v1-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Run Tests
           command: cd CoctailDB && ./gradlew lint test
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
-          path: CoctailDB/app/build/reports
+          path: app/build/reports
           destination: reports
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: CoctailDB/app/build/test-results
+          path: app/build/test-results
   build:
     executor: build-executor
     environment:
@@ -48,14 +48,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
+          key: jars-v1-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Building the application
           command: cd CoctailDB && ./gradlew :app:assembleDebug
       - persist_to_workspace:
           root: .
           paths:
-            - CoctailDB/app/build
+            - app/build
 workflows:
   version: 2
   test-and-deploy:
