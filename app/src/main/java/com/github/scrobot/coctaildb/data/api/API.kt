@@ -1,5 +1,6 @@
 package com.github.scrobot.coctaildb.data.api
 
+import com.github.scrobot.coctaildb.business.model.Drink
 import com.github.scrobot.coctaildb.business.model.DrinkPreview
 import com.github.scrobot.coctaildb.business.model.DrinkCategory
 import io.reactivex.Single
@@ -9,7 +10,7 @@ import retrofit2.http.Query
 interface API {
 
     @GET("lookup.php?i=11007")
-    fun getDrinkDetails(@Query("i") id: String)
+    fun getDrinkDetails(@Query("i") id: String): Single<Map<String, List<Drink>>>
 
     @GET("filter.php?")
     fun getDrinksByCategory(@Query("c") category: String): Single<Map<String, List<DrinkPreview>>>
