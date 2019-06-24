@@ -13,6 +13,9 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
+      - run:
+          name: print repo name
+          command: ls -n
       - restore_cache:
           key: jars-v1-{{ checksum "CoctailDB/build.gradle" }}-{{ checksum  "CoctailDB/app/build.gradle" }}
       - run:
