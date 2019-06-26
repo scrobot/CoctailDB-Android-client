@@ -2,7 +2,7 @@ package com.github.scrobot.coctaildb.business.interactor.filter
 
 import com.github.scrobot.coctaildb.business.model.DrinkCategory
 import com.github.scrobot.coctaildb.business.repository.FilterRepository
-import com.github.scrobot.coctaildb.presentation.filter.FilterInteractor
+import com.github.scrobot.coctaildb.presentation.interactor.FilterInteractor
 import io.reactivex.Completable
 import io.reactivex.Flowable
 

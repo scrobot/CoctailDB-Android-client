@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.github.scrobot.coctaildb.R
 import dagger.android.AndroidInjection
+import dagger.android.DaggerActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

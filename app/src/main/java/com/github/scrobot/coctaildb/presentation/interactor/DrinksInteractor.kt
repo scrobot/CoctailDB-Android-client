@@ -1,4 +1,4 @@
-package com.github.scrobot.coctaildb.presentation.drinks
+package com.github.scrobot.coctaildb.presentation.interactor
 
 import com.github.scrobot.coctaildb.business.model.DrinkCategory
 import com.github.scrobot.coctaildb.business.model.DrinkPreview

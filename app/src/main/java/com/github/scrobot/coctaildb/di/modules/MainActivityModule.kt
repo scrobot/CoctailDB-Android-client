@@ -10,7 +10,7 @@ import dagger.Module
 
 
 @Module(subcomponents = [MainActivitySubcomponent::class])
-internal abstract class MainActivityModule {
+abstract class MainActivityModule {
     @Binds
     @IntoMap
     @ClassKey(MainActivity::class)
