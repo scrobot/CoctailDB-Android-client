@@ -6,15 +6,15 @@ import com.github.scrobot.coctaildb.di.modules.common.DatabaseModule
 import com.github.scrobot.coctaildb.di.modules.MainActivityModule
 import com.github.scrobot.coctaildb.di.modules.common.NetworkModule
 import com.github.scrobot.coctaildb.di.modules.common.RouterModule
+import com.github.scrobot.coctaildb.di.modules.launcher.LauncherModule
 import dagger.Component
 
 @Component(modules = [
     AppModule::class,
     MainActivityModule::class,
     NetworkModule::class,
-    DatabaseModule::class,
-    RouterModule::class]
-)
+    DatabaseModule::class
+])
 interface CocktailApplicationComponent {
 
     fun inject(app: Application)

@@ -1,5 +1,7 @@
 package com.github.scrobot.coctaildb.di.modules
 
+import com.github.scrobot.coctaildb.di.modules.common.RouterModule
+import com.github.scrobot.coctaildb.di.modules.launcher.LauncherModule
 import com.github.scrobot.coctaildb.di.subcomponents.MainActivitySubcomponent
 import com.github.scrobot.coctaildb.ui.MainActivity
 import dagger.android.AndroidInjector
@@ -7,12 +9,13 @@ import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 import dagger.Binds
 import dagger.Module
+import dagger.android.ContributesAndroidInjector
 
 
-@Module(subcomponents = [MainActivitySubcomponent::class])
+@Module
 abstract class MainActivityModule {
-    @Binds
-    @IntoMap
-    @ClassKey(MainActivity::class)
-    internal abstract fun bindYourActivityInjectorFactory(factory: MainActivitySubcomponent.Factory): AndroidInjector.Factory<*>
+
+    @ContributesAndroidInjector(modules = [RouterModule::class, LauncherModule::class])
+    internal abstract fun bindMainActivityInjectorFactory(factory: MainActivitySubcomponent.Factory): AndroidInjector.Factory<*>
+
 }

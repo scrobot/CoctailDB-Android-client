@@ -7,7 +7,9 @@ import com.github.scrobot.coctaildb.presentation.interactor.LauncherInteractor
 import dagger.Module
 import dagger.Provides
 import com.github.scrobot.coctaildb.presentation.launcher.LauncherViewModel
+import com.github.scrobot.coctaildb.ui.Views
 import com.github.scrobot.coctaildb.utils.ViewModelProviderFactory
+import dagger.android.ContributesAndroidInjector
 import ru.terrakok.cicerone.Router
 
 
@@ -23,7 +25,5 @@ class LauncherFragmentModule {
 
     @Provides
     fun provideViewModelProvider(viewModel: LauncherViewModel) = ViewModelProviderFactory(viewModel)
-
-
 
 }
