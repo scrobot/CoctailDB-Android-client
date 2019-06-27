@@ -21,7 +21,6 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private val navigationHolder by lazy { CocktailApplication.component.navigationHolder() }
-    private val router by lazy { CocktailApplication.component.router() }
 
     private val hostedFragment
         get() = supportFragmentManager.findFragmentById(R.id.fragment) as BaseFragment<*>?

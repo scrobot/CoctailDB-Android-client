@@ -23,7 +23,6 @@ class DrinksRepositoryImpl @Inject constructor(
 
     override fun loadCategories() = api.getCategories()
         .map { it["drinks"] }
-        .onErrorReturn { emptyList() }
         .doOnSuccess { categoriesDAO.insertCategories(it ?: emptyList()) }
 
     override fun findDrinksByCategory(category: String) = api.getDrinksByCategory(category)

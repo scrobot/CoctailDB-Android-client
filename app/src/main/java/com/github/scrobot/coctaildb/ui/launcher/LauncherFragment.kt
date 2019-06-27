@@ -22,7 +22,7 @@ class LauncherFragment: BaseFragment<LauncherViewModel>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
+        viewModel.startLoadingData()
     }
 
 }
