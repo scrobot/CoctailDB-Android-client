@@ -1,4 +1,4 @@
-package com.github.scrobot.coctaildb.di.modules.common
+package com.github.scrobot.coctaildb.di.common
 
 import dagger.Module
 import dagger.Provides

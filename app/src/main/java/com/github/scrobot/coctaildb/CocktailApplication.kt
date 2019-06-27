@@ -1,31 +1,22 @@
 package com.github.scrobot.coctaildb
 
-import android.app.Activity
-import androidx.fragment.app.Fragment
 import androidx.multidex.MultiDexApplication
+import com.github.scrobot.coctaildb.di.CocktailApplicationComponent
 import com.github.scrobot.coctaildb.di.DaggerCocktailApplicationComponent
-import dagger.android.AndroidInjector
-import dagger.android.HasActivityInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
-import javax.inject.Inject
 
-class CocktailApplication: MultiDexApplication(), HasActivityInjector, HasSupportFragmentInjector {
+class CocktailApplication: MultiDexApplication() {
 
-    @Inject
-    lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
-
-    @Inject
-    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    companion object {
+        var instance: CocktailApplication? = null
+        lateinit var component: CocktailApplicationComponent
+    }
 
     override fun onCreate() {
         super.onCreate()
 
-        DaggerCocktailApplicationComponent.create()
-            .inject(this)
+        component = DaggerCocktailApplicationComponent.create().apply { inject(this@CocktailApplication) }
+
+        instance = this
     }
 
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingActivityInjector
-
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
 }

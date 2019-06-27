@@ -4,8 +4,9 @@ import com.github.scrobot.coctaildb.business.model.DrinkCategory
 import com.github.scrobot.coctaildb.business.repository.FilterRepository
 import com.github.scrobot.coctaildb.data.db.dao.CategoriesDAO
 import io.reactivex.Completable
+import javax.inject.Inject
 
-class FilterRepositoryImpl(
+class FilterRepositoryImpl @Inject constructor(
     private val dao: CategoriesDAO
 ): FilterRepository {
 

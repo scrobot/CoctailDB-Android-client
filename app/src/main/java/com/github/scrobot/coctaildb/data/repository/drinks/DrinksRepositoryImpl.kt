@@ -7,8 +7,9 @@ import com.github.scrobot.coctaildb.data.api.API
 import com.github.scrobot.coctaildb.data.db.dao.CategoriesDAO
 import com.github.scrobot.coctaildb.data.db.dao.DrinksDAO
 import io.reactivex.Completable
+import javax.inject.Inject
 
-class DrinksRepositoryImpl(
+class DrinksRepositoryImpl @Inject constructor(
     private val api: API,
     private val categoriesDAO: CategoriesDAO,
     private val drinksDAO: DrinksDAO

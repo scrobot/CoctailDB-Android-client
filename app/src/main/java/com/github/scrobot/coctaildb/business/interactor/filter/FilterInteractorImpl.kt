@@ -5,8 +5,9 @@ import com.github.scrobot.coctaildb.business.repository.FilterRepository
 import com.github.scrobot.coctaildb.presentation.interactor.FilterInteractor
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import javax.inject.Inject
 
-class FilterInteractorImpl(
+class FilterInteractorImpl @Inject constructor(
     private val repository: FilterRepository
 ): FilterInteractor {
 

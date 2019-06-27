@@ -3,8 +3,9 @@ package com.github.scrobot.coctaildb.business.interactor.launcher
 import com.github.scrobot.coctaildb.business.repository.DrinksRepository
 import com.github.scrobot.coctaildb.business.repository.FilterRepository
 import com.github.scrobot.coctaildb.presentation.interactor.LauncherInteractor
+import javax.inject.Inject
 
-class LauncherInteractorImpl(
+class LauncherInteractorImpl @Inject constructor(
     private val drinksRepository: DrinksRepository,
     private val categoriesRepository: FilterRepository
 ): LauncherInteractor {
