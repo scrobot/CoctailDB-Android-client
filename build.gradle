@@ -15,6 +15,7 @@ buildscript {
     ext.room_version = "2.1.0"
     ext.rx_version = "2.2.10"
     ext.rx_android_version = "2.1.1"
+    ext.rx_relay_version = "2.1.0"
     ext.dagger_version = "2.23.2"
     ext.timber_version = "4.7.1"
 

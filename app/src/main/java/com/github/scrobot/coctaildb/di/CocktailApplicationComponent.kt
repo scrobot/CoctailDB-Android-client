@@ -1,7 +1,10 @@
 package com.github.scrobot.coctaildb.di
 
+import android.app.Activity
 import android.app.Application
 import com.github.scrobot.coctaildb.di.common.*
+import com.github.scrobot.coctaildb.di.drinks.DrinksComponent
+import com.github.scrobot.coctaildb.di.drinks.DrinksModule
 import com.github.scrobot.coctaildb.di.launcher.LauncherComponent
 import com.github.scrobot.coctaildb.di.launcher.LauncherModule
 import dagger.Component
@@ -20,11 +23,11 @@ import javax.inject.Singleton
 interface CocktailApplicationComponent {
 
     fun inject(app: Application)
+    fun inject(activity: Activity)
 
     fun plus(module: LauncherModule): LauncherComponent
+    fun plus(module: DrinksModule): DrinksComponent
 
     fun navigationHolder(): NavigatorHolder
-
-    fun router(): Router
 
 }

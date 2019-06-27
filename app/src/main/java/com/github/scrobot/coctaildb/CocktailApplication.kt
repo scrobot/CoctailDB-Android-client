@@ -3,6 +3,7 @@ package com.github.scrobot.coctaildb
 import androidx.multidex.MultiDexApplication
 import com.github.scrobot.coctaildb.di.CocktailApplicationComponent
 import com.github.scrobot.coctaildb.di.DaggerCocktailApplicationComponent
+import io.reactivex.plugins.RxJavaPlugins
 import timber.log.Timber
 
 class CocktailApplication: MultiDexApplication() {
@@ -20,6 +21,8 @@ class CocktailApplication: MultiDexApplication() {
         instance = this
 
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+
+        RxJavaPlugins.setErrorHandler { Timber.e(it, it.localizedMessage) }
     }
 
 }

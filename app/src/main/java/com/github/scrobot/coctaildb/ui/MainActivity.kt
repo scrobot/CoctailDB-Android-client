@@ -7,16 +7,11 @@ import androidx.fragment.app.FragmentTransaction
 import com.github.scrobot.coctaildb.CocktailApplication
 import com.github.scrobot.coctaildb.R
 import com.github.scrobot.coctaildb.utils.FragmentAnimationUtils
-import dagger.android.AndroidInjection
-import dagger.android.DaggerActivity
 import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import ru.terrakok.cicerone.commands.Replace
 import timber.log.Timber
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +39,11 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState == null) {
             navigator.applyCommands(arrayOf(Replace(Views.LauncherView)))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navigationHolder.setNavigator(navigator)
     }
 
     override fun onResumeFragments() {
