@@ -15,7 +15,7 @@ class DrinksRepositoryImpl @Inject constructor(
     private val drinksDAO: DrinksDAO
 ): DrinksRepository {
 
-    override fun saveDrinks(drinks: List<DrinkPreview>) = Completable.fromAction {
+    override fun saveDrinks(drinks: List<DrinkPreview>) {
         drinksDAO.insertDrinks(drinks)
     }
 

@@ -5,4 +5,7 @@
     <string name="launcher_category_loaded">Loaded %d categories</string>
     <string name="launcher_drinks_loaded">Drinks for category "%s" successfully loaded (%d/%d)</string>
     <string name="launcher_completed">Completed</string>
+    <string name="launcher_welcome_text">Welcome to TheCocktailDB</string>
+
+    <string name="drinks_title">Drinks</string>
 </resources>

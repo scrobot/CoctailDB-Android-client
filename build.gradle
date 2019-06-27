@@ -18,6 +18,8 @@ buildscript {
     ext.rx_relay_version = "2.1.0"
     ext.dagger_version = "2.23.2"
     ext.timber_version = "4.7.1"
+    ext.glide_version = "4.9.0"
+    ext.actionitembagde_version = "3.3.2@aar"
 
     repositories {
         google()
