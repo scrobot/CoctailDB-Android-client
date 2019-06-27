@@ -8,13 +8,8 @@ import com.google.gson.annotations.SerializedName
 @Entity
 data class DrinkPreview(
     @PrimaryKey
-    @SerializedName("idDrink")
-    @Expose
     var id: String,
-    @SerializedName("strDrink")
-    @Expose
     val name: String,
-    @SerializedName("strDrinkThumb")
-    @Expose
-    val thumb: String? = null
+    val thumb: String? = null,
+    val category: String
 )

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CoctailDB</string>
+
+    <string name="launcher_start_loading">Wait for the seconds, please.. We are loading the data from network</string>
+    <string name="launcher_category_loaded">Loaded %d categories</string>
+    <string name="launcher_drinks_loaded">Drinks for category "%s" successfully loaded (%d/%d)</string>
+    <string name="launcher_completed">Completed</string>
+    <string name="launcher_welcome_text">Welcome to TheCocktailDB</string>
+
+    <string name="drinks_title">Drinks</string>
+    <string name="filter_title">Filters</string>
+    <string name="filter_apply">Apply</string>
 </resources>

@@ -21,11 +21,6 @@ abstract class BaseFragment<T: BaseViewModel>: Fragment() {
 
     protected val viewModel by lazy { ViewModelProviders.of(this, vmFactory)[getViewModelClass()] }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        AndroidSupportInjection.inject(this)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(layout, null)
 
     abstract fun getViewModelClass(): Class<T>

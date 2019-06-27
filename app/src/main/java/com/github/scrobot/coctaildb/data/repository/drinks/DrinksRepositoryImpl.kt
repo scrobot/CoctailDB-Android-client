@@ -7,14 +7,15 @@ import com.github.scrobot.coctaildb.data.api.API
 import com.github.scrobot.coctaildb.data.db.dao.CategoriesDAO
 import com.github.scrobot.coctaildb.data.db.dao.DrinksDAO
 import io.reactivex.Completable
+import javax.inject.Inject
 
-class DrinksRepositoryImpl(
+class DrinksRepositoryImpl @Inject constructor(
     private val api: API,
     private val categoriesDAO: CategoriesDAO,
     private val drinksDAO: DrinksDAO
 ): DrinksRepository {
 
-    override fun saveDrinks(drinks: List<DrinkPreview>) = Completable.fromAction {
+    override fun saveDrinks(drinks: List<DrinkPreview>) {
         drinksDAO.insertDrinks(drinks)
     }
 
@@ -22,7 +23,6 @@ class DrinksRepositoryImpl(
 
     override fun loadCategories() = api.getCategories()
         .map { it["drinks"] }
-        .onErrorReturn { emptyList() }
         .doOnSuccess { categoriesDAO.insertCategories(it ?: emptyList()) }
 
     override fun findDrinksByCategory(category: String) = api.getDrinksByCategory(category)

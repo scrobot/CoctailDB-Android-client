@@ -5,11 +5,15 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-@Entity
-data class DrinkCategory(
+data class DrinkPreviewDTO(
     @PrimaryKey
-    @SerializedName("strCategory")
+    @SerializedName("idDrink")
     @Expose
-    val categoryId: String,
-    var isChecked: Boolean = true
+    var id: String,
+    @SerializedName("strDrink")
+    @Expose
+    val name: String,
+    @SerializedName("strDrinkThumb")
+    @Expose
+    val thumb: String? = null
 )

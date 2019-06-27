@@ -8,7 +8,7 @@ open class BaseViewModel: ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    fun backPressAction() {}
+    open fun backPressAction() {}
 
     override fun onCleared() {
         super.onCleared()

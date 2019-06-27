@@ -12,6 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -62,6 +63,7 @@ dependencies {
     // ReactiveX
     implementation "io.reactivex.rxjava2:rxjava:$rx_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+    implementation "com.jakewharton.rxrelay2:rxrelay:$rx_relay_version"
 
     // DI
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
@@ -70,6 +72,9 @@ dependencies {
 
     // Misc
     implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.mikepenz:actionitembadge:$actionitembagde_version"
 
     // tests
     testImplementation 'junit:junit:4.12'
