@@ -8,4 +8,6 @@
     <string name="launcher_welcome_text">Welcome to TheCocktailDB</string>
 
     <string name="drinks_title">Drinks</string>
+    <string name="filter_title">Filters</string>
+    <string name="filter_apply">Apply</string>
 </resources>

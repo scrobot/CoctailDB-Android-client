@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.github.scrobot.coctaildb.business.model.DrinkPreview
 import com.github.scrobot.coctaildb.presentation.BaseViewModel
 import com.github.scrobot.coctaildb.presentation.interactor.DrinksInteractor
+import com.github.scrobot.coctaildb.ui.Views
 import com.github.scrobot.coctaildb.utils.SchedulersProvider
 import ru.terrakok.cicerone.Router
 import timber.log.Timber
@@ -33,6 +34,6 @@ class DrinksViewModel(
     }
 
     fun navigateToFilter() {
-
+        router.navigateTo(Views.FilterView)
     }
 }

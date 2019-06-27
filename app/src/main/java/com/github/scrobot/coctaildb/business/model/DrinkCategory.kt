@@ -11,5 +11,5 @@ data class DrinkCategory(
     @SerializedName("strCategory")
     @Expose
     val categoryId: String,
-    val isChecked: Boolean = true
+    var isChecked: Boolean = true
 )

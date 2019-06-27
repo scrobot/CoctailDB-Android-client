@@ -5,6 +5,8 @@ import android.app.Application
 import com.github.scrobot.coctaildb.di.common.*
 import com.github.scrobot.coctaildb.di.drinks.DrinksComponent
 import com.github.scrobot.coctaildb.di.drinks.DrinksModule
+import com.github.scrobot.coctaildb.di.filter.FilterComponent
+import com.github.scrobot.coctaildb.di.filter.FilterModule
 import com.github.scrobot.coctaildb.di.launcher.LauncherComponent
 import com.github.scrobot.coctaildb.di.launcher.LauncherModule
 import dagger.Component
@@ -27,6 +29,7 @@ interface CocktailApplicationComponent {
 
     fun plus(module: LauncherModule): LauncherComponent
     fun plus(module: DrinksModule): DrinksComponent
+    fun plus(module: FilterModule): FilterComponent
 
     fun navigationHolder(): NavigatorHolder
 
