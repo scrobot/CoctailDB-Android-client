@@ -10,16 +10,24 @@ import androidx.lifecycle.ViewModelProviders
 import com.github.scrobot.coctaildb.presentation.BaseViewModel
 import com.github.scrobot.coctaildb.utils.ViewModelProviderFactory
 import dagger.android.support.AndroidSupportInjection
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 abstract class BaseFragment<T: BaseViewModel>: Fragment() {
 
     abstract val layout: Int
 
+    val compositeDisposable = CompositeDisposable()
+
     @Inject
     lateinit var vmFactory: ViewModelProviderFactory<T>
 
     protected val viewModel by lazy { ViewModelProviders.of(this, vmFactory)[getViewModelClass()] }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(layout, null)
 
@@ -27,5 +35,10 @@ abstract class BaseFragment<T: BaseViewModel>: Fragment() {
 
     fun onBackPressed() {
         viewModel.backPressAction()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
     }
 }

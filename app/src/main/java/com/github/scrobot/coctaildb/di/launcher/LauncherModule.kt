@@ -5,6 +5,7 @@ import com.github.scrobot.coctaildb.business.repository.DrinksRepository
 import com.github.scrobot.coctaildb.business.repository.FilterRepository
 import com.github.scrobot.coctaildb.presentation.interactor.LauncherInteractor
 import com.github.scrobot.coctaildb.presentation.launcher.LauncherViewModel
+import com.github.scrobot.coctaildb.utils.PreferenceManager
 import com.github.scrobot.coctaildb.utils.ViewModelProviderFactory
 import dagger.Module
 import dagger.Provides
@@ -14,8 +15,11 @@ import ru.terrakok.cicerone.Router
 class LauncherModule {
 
     @Provides
-    fun provideInteractor(drinksRepository: DrinksRepository, categoriesRepository: FilterRepository): LauncherInteractor
-            = LauncherInteractorImpl(drinksRepository, categoriesRepository)
+    fun provideInteractor(
+        drinksRepository: DrinksRepository,
+        categoriesRepository: FilterRepository,
+        preferenceManager: PreferenceManager
+    ): LauncherInteractor = LauncherInteractorImpl(drinksRepository, categoriesRepository, preferenceManager)
 
     @Provides
     fun provideViewModel(interactor: LauncherInteractor, router: Router) = LauncherViewModel(interactor, router)

@@ -14,6 +14,7 @@ class FilterViewModel(
 ) : BaseViewModel() {
 
     private val categoriesLiveData = MutableLiveData<List<DrinkCategory>>()
+    private val filterUpdateLiveData = MutableLiveData<FilterUpdate>()
 
     fun observeCategories(): LiveData<List<DrinkCategory>> {
         interactor.selectCategories()
@@ -25,8 +26,23 @@ class FilterViewModel(
         return categoriesLiveData
     }
 
+    fun observeUpdateStatus(): LiveData<FilterUpdate> = filterUpdateLiveData
+
+    fun saveFilter(categories: List<DrinkCategory>) {
+        interactor.updateCategories(categories)
+            .subscribeOn(SchedulersProvider.newThread())
+            .observeOn(SchedulersProvider.ui())
+            .doOnError { filterUpdateLiveData.value = FilterUpdate.ERROR }
+            .subscribe { filterUpdateLiveData.value = FilterUpdate.SUCCESS }
+            .also { addDisposable(it) }
+    }
+
     override fun backPressAction() {
         super.backPressAction()
         router.exit()
+    }
+
+    enum class FilterUpdate {
+        SUCCESS, ERROR
     }
 }
