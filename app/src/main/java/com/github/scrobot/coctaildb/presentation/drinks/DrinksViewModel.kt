@@ -16,6 +16,17 @@ class DrinksViewModel(
 ) : BaseViewModel() {
 
     private val drinksLiveData = MutableLiveData<Map<String, List<DrinkPreview>>>()
+    private val filterLiveData = MutableLiveData<Boolean>()
+
+    fun observeFilterState(): LiveData<Boolean> {
+        interactor.haveAnyActiveFilter()
+            .subscribeOn(SchedulersProvider.io())
+            .observeOn(SchedulersProvider.ui())
+            .subscribe { filterLiveData.value = it }
+            .also { addDisposable(it) }
+
+        return filterLiveData
+    }
 
     fun observeDrinks(): LiveData<Map<String, List<DrinkPreview>>> {
         interactor.loadDrinks()

@@ -13,7 +13,7 @@ interface DrinksDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDrinks(drinks: List<DrinkPreview>)
 
-    @Query("SELECT * FROM drinkpreview INNER JOIN drinkcategory ON drinkcategory.categoryId = drinkpreview.category WHERE drinkcategory.isChecked = :isChecked")
-    fun selectDrinks(isChecked: Boolean = true): Maybe<List<DrinkPreview>>
+    @Query("SELECT * FROM drinkpreview INNER JOIN drinkcategory ON drinkcategory.categoryId = drinkpreview.category WHERE drinkcategory.isChecked = 1")
+    fun selectDrinks(): Maybe<List<DrinkPreview>>
 
 }

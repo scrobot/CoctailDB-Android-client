@@ -17,4 +17,7 @@ interface CategoriesDAO {
     @Query("SELECT * FROM drinkcategory")
     fun selectCategories(): Flowable<List<DrinkCategory>>
 
+    @Query("SELECT * FROM drinkcategory WHERE isChecked = 0")
+    fun uncheckedCategories(): Flowable<List<DrinkCategory>>
+
 }

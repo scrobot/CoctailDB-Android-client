@@ -19,6 +19,8 @@ class DrinksRepositoryImpl @Inject constructor(
         drinksDAO.insertDrinks(drinks)
     }
 
+    override fun selectUncheckedCategories() = categoriesDAO.uncheckedCategories()
+
     override fun selectAllDrinks() = drinksDAO.selectDrinks()
 
     override fun loadCategories() = api.getCategories()

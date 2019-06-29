@@ -6,4 +6,5 @@
 
     <color name="category_label">#8a000000</color>
     <color name="devider">#1e000000</color>
+    <color name="filter_badge">#ff5722</color>
 </resources>
