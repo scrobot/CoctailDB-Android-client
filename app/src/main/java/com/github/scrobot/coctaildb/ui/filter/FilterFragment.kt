@@ -55,9 +55,7 @@ class FilterFragment: BaseFragment<FilterViewModel>(), FilterListChangesListener
                 .observe(viewLifecycleOwner, Observer {
                     when(it) {
                         FilterViewModel.FilterUpdate.SUCCESS -> {
-                            Toast.makeText(context, getString(R.string.filter_updated_success), Toast.LENGTH_SHORT).show()
-                            filterAdapter.updateOldList()
-                            isEnabled = false
+                            viewModel.returnToDrinks()
                         }
                         FilterViewModel.FilterUpdate.ERROR ->
                             Toast.makeText(context, getString(R.string.filter_updated_error), Toast.LENGTH_SHORT).show()

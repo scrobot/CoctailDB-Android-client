@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         if(savedInstanceState == null) {
             val view = if(CocktailApplication.component.preferenceManager().isFirstLaunch()) Views.LauncherView
-                       else Views.DrinksView
+                       else Views.DrinksView()
 
             navigator.applyCommands(arrayOf(Replace(view)))
         }

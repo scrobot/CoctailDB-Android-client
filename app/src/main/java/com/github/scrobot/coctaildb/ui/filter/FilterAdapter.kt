@@ -33,12 +33,6 @@ class FilterAdapter(
         notifyDataSetChanged()
     }
 
-    fun updateOldList() {
-        originalList.clear()
-        originalList.addAll(categoriesList)
-        diffUtil = FilterDIffUtil(originalList, categoriesList)
-    }
-
     fun getFilterChanges() = categoriesList.toList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)

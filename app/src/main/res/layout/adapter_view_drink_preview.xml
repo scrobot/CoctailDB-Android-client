@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_marginTop="8dp"
+              android:paddingTop="8dp"
               android:layout_marginBottom="4dp"
+              android:clickable="true"
+              android:focusable="true"
+              android:background="?android:attr/selectableItemBackground"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
@@ -32,7 +35,6 @@
 
     <View android:layout_width="match_parent"
           android:layout_height="1dp"
-          android:layout_marginTop="4dp"
           android:background="@color/devider"/>
 
 </LinearLayout>

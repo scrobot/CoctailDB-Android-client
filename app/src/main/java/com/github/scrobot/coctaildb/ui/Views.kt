@@ -11,8 +11,8 @@ object Views {
         override fun getFragment() = LauncherFragment()
     }
 
-    object DrinksView: SupportAppScreen() {
-        override fun getFragment() = DrinksFragment()
+    class DrinksView(private val createNew: Boolean = false): SupportAppScreen() {
+        override fun getFragment() = if(createNew) DrinksFragment() else DrinksFragment.getInstance()
     }
 
     object FilterView: SupportAppScreen() {

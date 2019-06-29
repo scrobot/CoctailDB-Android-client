@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.github.scrobot.coctaildb.business.model.DrinkCategory
 import com.github.scrobot.coctaildb.presentation.BaseViewModel
 import com.github.scrobot.coctaildb.presentation.interactor.FilterInteractor
+import com.github.scrobot.coctaildb.ui.Views
 import com.github.scrobot.coctaildb.utils.SchedulersProvider
 import ru.terrakok.cicerone.Router
 
@@ -40,6 +41,10 @@ class FilterViewModel(
     override fun backPressAction() {
         super.backPressAction()
         router.exit()
+    }
+
+    fun returnToDrinks() {
+        router.newRootScreen(Views.DrinksView(true))
     }
 
     enum class FilterUpdate {

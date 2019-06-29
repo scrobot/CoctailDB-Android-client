@@ -74,7 +74,7 @@ class LauncherViewModel @Inject constructor(
         when(state) {
             FinishLoading -> {
                 interactor.checkFirstLaunchingComplete()
-                router.newRootScreen(Views.DrinksView)
+                router.newRootScreen(Views.DrinksView())
             }
         }
     }

@@ -17,10 +17,6 @@ import kotlinx.android.synthetic.main.fragment_drinks.vToolbar
 import timber.log.Timber
 import android.graphics.drawable.LayerDrawable
 
-
-
-
-
 class DrinksFragment: BaseFragment<DrinksViewModel>() {
     override val layout: Int = R.layout.fragment_drinks
 
@@ -28,6 +24,15 @@ class DrinksFragment: BaseFragment<DrinksViewModel>() {
 
     private val drinksAdapter = DrinksAdapter()
     private var badge: BadgeDrawable? = null
+
+    companion object {
+        private var INSTANCE: DrinksFragment? = null
+
+        fun getInstance() = if(INSTANCE == null)
+            DrinksFragment().apply { INSTANCE = this }
+        else INSTANCE
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
