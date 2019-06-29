@@ -25,7 +25,7 @@
             android:id="@+id/vFilterList"/>
     <Button
             android:text="@string/filter_apply"
-            android:background="@android:color/black"
+            android:background="@drawable/button_background"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:layout_width="0dp"
