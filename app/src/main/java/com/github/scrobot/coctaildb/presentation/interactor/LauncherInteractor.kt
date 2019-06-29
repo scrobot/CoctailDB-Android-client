@@ -13,4 +13,5 @@ interface LauncherInteractor {
 
     fun loadDrinks(): Flowable<List<DrinkPreview>?>
 
+    fun checkFirstLaunchingComplete()
 }

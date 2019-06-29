@@ -40,7 +40,7 @@ class DrinksFragment: BaseFragment<DrinksViewModel>() {
         vDrinksList.adapter = drinksAdapter
 
         viewModel.observeDrinks()
-            .observe(this, Observer {
+            .observe(viewLifecycleOwner, Observer {
                 Timber.d(it.toString())
                 drinksAdapter.load(it)
             })

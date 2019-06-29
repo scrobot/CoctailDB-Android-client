@@ -72,7 +72,10 @@ class LauncherViewModel @Inject constructor(
     private fun handleLoadingState(state: LoadingState) {
         loadingStateLiveData.value = state
         when(state) {
-            FinishLoading -> router.newRootScreen(Views.DrinksView)
+            FinishLoading -> {
+                interactor.checkFirstLaunchingComplete()
+                router.newRootScreen(Views.DrinksView)
+            }
         }
     }
 

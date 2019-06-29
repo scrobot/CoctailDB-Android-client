@@ -26,7 +26,7 @@ class LauncherFragment: BaseFragment<LauncherViewModel>() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel.startLoadingData()
-            .observe(this, Observer {
+            .observe(viewLifecycleOwner, Observer {
                 vLoadingInfo.text = when(it) {
                     StartLoading ->  getString(R.string.launcher_start_loading)
                     is CategoryLoaded -> getString(R.string.launcher_category_loaded, it.sum)

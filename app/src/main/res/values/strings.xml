@@ -10,4 +10,6 @@
     <string name="drinks_title">Drinks</string>
     <string name="filter_title">Filters</string>
     <string name="filter_apply">Apply</string>
+    <string name="filter_updated_success">Filter successfully updated</string>
+    <string name="filter_updated_error">Something went wrong while filter was updating</string>
 </resources>

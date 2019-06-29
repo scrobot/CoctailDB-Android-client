@@ -2,7 +2,9 @@ package com.github.scrobot.coctaildb.ui.filter
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.scrobot.coctaildb.CocktailApplication
@@ -12,6 +14,7 @@ import com.github.scrobot.coctaildb.presentation.filter.FilterViewModel
 import com.github.scrobot.coctaildb.ui.BaseFragment
 import com.github.scrobot.coctaildb.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_filter.*
+import timber.log.Timber
 
 class FilterFragment: BaseFragment<FilterViewModel>() {
 
@@ -44,12 +47,23 @@ class FilterFragment: BaseFragment<FilterViewModel>() {
         }
 
         vApply.setOnClickListener {
-            filterAdapter.getFilterChanges()
+            viewModel.saveFilter(filterAdapter.getFilterChanges())
         }
 
         viewModel.observeCategories()
-            .observe(this, Observer {
+            .observe(viewLifecycleOwner, Observer {
                 filterAdapter.load(it)
+            })
+
+        viewModel.observeUpdateStatus()
+            .observe(viewLifecycleOwner, Observer {
+                when(it) {
+                    FilterViewModel.FilterUpdate.SUCCESS ->
+                        Toast.makeText(context, getString(R.string.filter_updated_success), Toast.LENGTH_SHORT).show()
+                    FilterViewModel.FilterUpdate.ERROR ->
+                        Toast.makeText(context, getString(R.string.filter_updated_error), Toast.LENGTH_SHORT).show()
+                    else -> Timber.d("Update status observer init")
+                }
             })
     }
 

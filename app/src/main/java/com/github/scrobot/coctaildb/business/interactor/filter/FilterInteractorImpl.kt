@@ -13,6 +13,6 @@ class FilterInteractorImpl @Inject constructor(
 
     override fun selectCategories(): Flowable<List<DrinkCategory>> = repository.selectCategories()
 
-    override fun updateCategories(list: List<DrinkCategory>): Completable = updateCategories(list)
+    override fun updateCategories(list: List<DrinkCategory>): Completable = repository.updateCategories(list)
 
 }

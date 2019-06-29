@@ -9,6 +9,7 @@ import com.github.scrobot.coctaildb.di.filter.FilterComponent
 import com.github.scrobot.coctaildb.di.filter.FilterModule
 import com.github.scrobot.coctaildb.di.launcher.LauncherComponent
 import com.github.scrobot.coctaildb.di.launcher.LauncherModule
+import com.github.scrobot.coctaildb.utils.PreferenceManager
 import dagger.Component
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -32,5 +33,6 @@ interface CocktailApplicationComponent {
     fun plus(module: FilterModule): FilterComponent
 
     fun navigationHolder(): NavigatorHolder
+    fun preferenceManager(): PreferenceManager
 
 }
