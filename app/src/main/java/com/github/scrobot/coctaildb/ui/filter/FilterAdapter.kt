@@ -19,6 +19,8 @@ class FilterAdapter(
     lateinit var diffUtil: FilterDIffUtil
 
     fun load(list: List<DrinkCategory>) {
+        Timber.d(list.toString())
+
         if(originalList.isEmpty()) {
             originalList.addAll(list)
         }
@@ -27,7 +29,7 @@ class FilterAdapter(
         categoriesList.addAll(list)
 
         diffUtil = FilterDIffUtil(originalList, categoriesList)
-//        DiffUtil.calculateDiff(diffUtil).dispatchUpdatesTo(this)
+        DiffUtil.calculateDiff(diffUtil).dispatchUpdatesTo(this)
         notifyDataSetChanged()
     }
 

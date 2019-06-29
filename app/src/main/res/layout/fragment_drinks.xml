@@ -17,16 +17,17 @@
     />
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/vToolbar"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/vSwipeRefreshContainer">
+            android:id="@+id/vSwipeRefreshContainer"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/vDrinksList"/>
+                android:layout_height="match_parent" android:id="@+id/vDrinksList"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

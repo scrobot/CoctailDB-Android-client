@@ -23,6 +23,10 @@ class DrinksRepositoryImpl @Inject constructor(
 
     override fun loadCategories() = api.getCategories()
         .map { it["drinks"] }
+        .toFlowable()
+        .flatMapIterable { it }
+        .map { it.apply { it.isChecked = true } }
+        .toList()
         .doOnSuccess { categoriesDAO.insertCategories(it ?: emptyList()) }
 
     override fun findDrinksByCategory(category: String) = api.getDrinksByCategory(category)
